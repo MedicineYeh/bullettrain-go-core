@@ -93,11 +93,12 @@ func main() {
 		n.WriteString(<-c)
 	}
 
-	if l := os.Getenv("BULLETTRAIN_CARS_SEPARATE_LINE"); l != "false" {
-		n.WriteRune('\n')
+	if e := os.Getenv("BULLETTRAIN_CARS_CAR_ONLY"); e != "true" {
+		if l := os.Getenv("BULLETTRAIN_CARS_SEPARATE_LINE"); l != "false" {
+			n.WriteRune('\n')
+		}
+		n.WriteString(lineEnding())
 	}
-
-	n.WriteString(lineEnding())
 
 	if d := os.Getenv("BULLETTRAIN_DEBUG"); d == "true" {
 		fmt.Printf("%+ x", n.String())
