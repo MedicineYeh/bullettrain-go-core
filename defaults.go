@@ -15,6 +15,7 @@ import (
 	"github.com/bullettrain-sh/bullettrain-go-php"
 	"github.com/bullettrain-sh/bullettrain-go-python"
 	"github.com/bullettrain-sh/bullettrain-go-ruby"
+	"github.com/medicineyeh/bullettrain-go-virtualenv"
 )
 
 const (
@@ -43,5 +44,6 @@ func trailers(currentWorkingDir string) map[string]carRenderer {
 		"status":  &carStatus.Car{},
 		"openvpn": &carOpenvpn.Car{},
 		"time":    &carTime.Car{},
+		"virtualenv":  &carVirtualenv.Car{Pwd: currentWorkingDir},
 	}
 }
