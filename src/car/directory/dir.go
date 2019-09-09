@@ -114,9 +114,9 @@ func rebuildDirForRender(directory string) string {
 
 		partsReconstruct = append(partsReconstruct, directoryParts[len(directoryParts)-tailMaxLength:]...)
 
-		return strings.Join(partsReconstruct, sep)
+		return strings.Join(partsReconstruct, sep) + " "
 	} else {
-		return strings.Join(directoryParts, sep)
+		return strings.Join(directoryParts, sep) + " "
 	}
 }
 
