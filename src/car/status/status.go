@@ -4,6 +4,9 @@ import (
 	"bytes"
 	"log"
 	"os"
+	"os/exec"
+	"strconv"
+	"regexp"
 	"text/template"
 
 	"github.com/bullettrain-sh/bullettrain-go-core/src/ansi"
@@ -40,6 +43,20 @@ func (c *Car) CanShow() bool {
 	return false
 }
 
+func getReturnCode() string {
+	var code_str string
+	code_str = os.Args[1]
+	code, _ := strconv.Atoi(os.Args[1])
+	if code > 128 {
+		cmdCode := exec.Command("kill", "-l", strconv.Itoa(code - 128))
+		cmdOut, _ := cmdCode.CombinedOutput()
+		// Make a Regex to say we only want letters and numbers
+		reg, _ := regexp.Compile("[^a-zA-Z0-9]+")
+		code_str = reg.ReplaceAllString(string(cmdOut), "")
+	}
+	return code_str
+}
+
 // Render builds and passes the end product of a completely composed car onto
 // the channel.
 func (c *Car) Render(out chan<- string) {
@@ -70,7 +87,7 @@ func (c *Car) Render(out chan<- string) {
 	data := struct {
 		Icon string
 		Code string
-	}{Icon: statusSymbol, Code: os.Args[1]}
+	}{Icon: statusSymbol, Code: getReturnCode()}
 	fromTpl := new(bytes.Buffer)
 	err := tpl.Execute(fromTpl, data)
 	if err != nil {
