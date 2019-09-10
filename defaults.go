@@ -1,13 +1,14 @@
 package main
 
 import (
-	"github.com/bullettrain-sh/bullettrain-go-core/src/car/date"
-	"github.com/bullettrain-sh/bullettrain-go-core/src/car/directory"
-	"github.com/bullettrain-sh/bullettrain-go-core/src/car/host"
-	"github.com/bullettrain-sh/bullettrain-go-core/src/car/os"
-	"github.com/bullettrain-sh/bullettrain-go-core/src/car/status"
-	"github.com/bullettrain-sh/bullettrain-go-core/src/car/time"
-	"github.com/bullettrain-sh/bullettrain-go-core/src/car/user"
+	"github.com/medicineyeh/bullettrain-go-core/src/car/date"
+	"github.com/medicineyeh/bullettrain-go-core/src/car/directory"
+	"github.com/medicineyeh/bullettrain-go-core/src/car/host"
+	"github.com/medicineyeh/bullettrain-go-core/src/car/os"
+	"github.com/medicineyeh/bullettrain-go-core/src/car/status"
+	"github.com/medicineyeh/bullettrain-go-core/src/car/time"
+	"github.com/medicineyeh/bullettrain-go-core/src/car/user"
+	"github.com/medicineyeh/bullettrain-go-core/src/car/exec_time"
 	"github.com/bullettrain-sh/bullettrain-go-git"
 	"github.com/bullettrain-sh/bullettrain-go-golang"
 	"github.com/bullettrain-sh/bullettrain-go-nodejs"
@@ -19,7 +20,7 @@ import (
 )
 
 const (
-	defaultCarOrder    = "os time date user host dir python go ruby nodejs php git status"
+	defaultCarOrder    = "os time date user host dir python go ruby nodejs php git status exec_time"
 	separatorSymbol    = ""
 	// language=GoTemplate
 	separatorTemplate  = `{{.Icon | printf "%s " | c}}`
@@ -44,6 +45,7 @@ func trailers(currentWorkingDir string) map[string]carRenderer {
 		"status":  &carStatus.Car{},
 		"openvpn": &carOpenvpn.Car{},
 		"time":    &carTime.Car{},
+		"exec_time":    &carExecTime.Car{},
 		"virtualenv":  &carVirtualenv.Car{Pwd: currentWorkingDir},
 	}
 }

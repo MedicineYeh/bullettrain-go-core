@@ -23,6 +23,7 @@ by the
     - [OS Car](#os-car)
     - [Last command exit code Car](#last-command-exit-code-car)
     - [Background jobs Car](#background-jobs-car)
+    - [Execution Time Car](#exection-time-car)
 - [Development](#development)
     - [Managing dependencies](#managing-dependencies)
     - [Plugins](#plugins)
@@ -460,6 +461,35 @@ ZSH example:
 | BULLETTRAIN_CAR_STATUS_PAINT            | Colour override for the car's paint.                           | white:red                                        |
 | BULLETTRAIN_CAR_STATUS_SEPARATOR_PAINT  | Colour override for the car's right hand side separator paint. | Using default painting algorythm.                |
 | BULLETTRAIN_CAR_STATUS_SEPARATOR_SYMBOL | Override the car's right hand side separator symbol.           | Using global symbol.                             |
+### Execution Time Car
+
+Showing current time.
+
+**Callword**: `time`
+
+**Template variables**:
+
+* `.Icon`: the car's icon
+* `.Time`: the time text
+
+**Template colours**:
+
+* `c`: the car's colour
+* `cs`: the car symbol's colour
+
+**Options**
+
+| Environment variable                         | Description                                                    | Default value                                   |
+|:---------------------------------------------|:---------------------------------------------------------------|:------------------------------------------------|
+| BULLETTRAIN_CAR_EXEC_TIME_SHOW               | Whether the car needs to be shown.                             | false                                           |
+| BULLETTRAIN_CAR_EXEC_TIME_TEMPLATE           | The car's template.                                            | `{{.Icon \| prinf " %s " \| cs}}{{.Time \| c}}` |
+| BULLETTRAIN_CAR_EXEC_TIME_SYMBOL_ICON        | Icon displayed on the car.                                     | ``                                             |
+| BULLETTRAIN_CAR_EXEC_TIME_SYMBOL_PAINT       | Colour override for the car's symbol.                          | 232:228                                         |
+| BULLETTRAIN_CAR_EXEC_TIME_PAINT              | Colour override for the car's paint.                           | 232:228                                         |
+| BULLETTRAIN_CAR_EXEC_TIME_SEPARATOR_PAINT    | Colour override for the car's right hand side separator paint. | Using default painting algorythm.               |
+| BULLETTRAIN_CAR_EXEC_TIME_SEPARATOR_SYMBOL   | Override the car's right hand side separator symbol.           | Using global symbol.                            |
+| BULLETTRAIN_CAR_EXEC_TIME_SEPARATOR_TEMPLATE | Defines the car separator's template.                          | Using global template.                          |
+| BULLETTRAIN_CAR_EXEC_TIME_ELAPSED            | Defines the threshold of displaying time                       | 2s                                              |
 
 ### Background jobs Car
 
