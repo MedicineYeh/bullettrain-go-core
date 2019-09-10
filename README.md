@@ -125,24 +125,22 @@ In order to use the theme, you will first need:
 
 ## Installing
 
-1, We have prepared release executables on our release page
+1, We have prepared release executables in this repo. Run the
+following command to download.
 
-https://github.com/bullettrain-sh/bullettrain-go-core/releases.
-
-Download the one that matches your architecture and OS.
+`git clone https://github.com/MedicineYeh/bullettrain-go-core $ZSH_CUSTOM/themes/bullettrain-go`
 
 Of course you are more then welcomed to build your own, customised
 version if you feel comfortable with Go.
 [Here are some help to do that](docs/creating-new-cars.md).
 
-2, In your rc files you only need to set the single prompt variable.
-
-(Single quotes are important not to store the evaluated result in the
-variable, but to reevaluate on every call.)
+2, In your rc files you need to set the ZSH_THEME and ZSH_CUSTOM variables.
 
 **ZSH - .zshrc**
 
-`PROMPT='$(bullettrain $?)'`
+`ZSH_THEME="bullettrain-go/bullet-train-go"`
+
+`ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"`
 
 ## Options
 
