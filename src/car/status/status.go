@@ -4,9 +4,7 @@ import (
 	"bytes"
 	"log"
 	"os"
-	"os/exec"
 	"strconv"
-	"regexp"
 	"text/template"
 
 	"github.com/bullettrain-sh/bullettrain-go-core/src/ansi"
@@ -45,14 +43,12 @@ func (c *Car) CanShow() bool {
 
 func getReturnCode() string {
 	var code_str string
-	code_str = os.Args[1]
 	code, _ := strconv.Atoi(os.Args[1])
-	if code > 128 {
-		cmdCode := exec.Command("kill", "-l", strconv.Itoa(code - 128))
-		cmdOut, _ := cmdCode.CombinedOutput()
-		// Make a Regex to say we only want letters and numbers
-		reg, _ := regexp.Compile("[^a-zA-Z0-9]+")
-		code_str = reg.ReplaceAllString(string(cmdOut), "")
+	if code >= 129 && code <= 159 {
+		names := [31]string{"HUP", "INT", "QUIT", "ILL", "TRAP", "ABRT", "BUS", "FPE", "KILL", "USR1", "SEGV", "USR2", "PIPE", "ALRM", "TERM", "STKFLT", "CHLD", "CONT", "STOP", "TSTP", "TTIN", "TTOU", "URG", "XCPU", "XFSZ", "VTALRM", "PROF", "WINCH", "POLL", "PWR", "SYS"}
+		code_str = names[code - 129]
+	} else {
+		code_str = os.Args[1]
 	}
 	return code_str
 }

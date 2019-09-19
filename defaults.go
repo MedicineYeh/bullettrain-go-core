@@ -9,7 +9,7 @@ import (
 	"github.com/medicineyeh/bullettrain-go-core/src/car/time"
 	"github.com/medicineyeh/bullettrain-go-core/src/car/user"
 	"github.com/medicineyeh/bullettrain-go-core/src/car/exec_time"
-	"github.com/bullettrain-sh/bullettrain-go-git"
+	"github.com/medicineyeh/bullettrain-go-git"
 	"github.com/bullettrain-sh/bullettrain-go-golang"
 	"github.com/bullettrain-sh/bullettrain-go-nodejs"
 	"github.com/bullettrain-sh/bullettrain-go-openvpn"
